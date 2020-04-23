@@ -24,14 +24,33 @@ class MainPage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: storeModel.isLoading
-            ? loadingWidget()
-            : ListView(
-                children: storeModel.stores.map((e) {
-                  return RemainStatListTile(e);
-                }).toList(),
-              ),
+          child: _buildBody(storeModel),
       ),
+    );
+  }
+
+  Widget _buildBody(StoreModel storeModel) {
+    if (storeModel.isLoading) {
+      return loadingWidget();
+    }
+    if (storeModel.stores.isEmpty) {
+      return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+
+              Text('반경 5km 이내에 재고가 없습니다.'),
+              Text('반경 5km 이내에 재고가 없습니다.'),
+
+
+            ],
+          )
+      );
+    }
+    return ListView(
+      children: storeModel.stores.map((e) {
+        return RemainStatListTile(e);
+      }).toList(),
     );
   }
 

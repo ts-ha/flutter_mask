@@ -28,7 +28,7 @@ dependencies:
   provider: ^4.0.5
   geolocator: ^5.3.1
   url_launcher: ^5.4.5
-
+  latlong: ^0.6.1
 
 dev_dependencies:
   flutter_test:
